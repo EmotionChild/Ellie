@@ -19,7 +19,7 @@
   </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AngleSharp" Version="0.17.0">
+        <PackageReference Include="AngleSharp" Version="0.17.1">
             <PrivateAssets>all</PrivateAssets>
             <Publish>True</Publish>
         </PackageReference>
