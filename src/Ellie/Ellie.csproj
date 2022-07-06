@@ -23,7 +23,7 @@
             <PrivateAssets>all</PrivateAssets>
             <Publish>True</Publish>
         </PackageReference>
-        <PackageReference Include="AWSSDK.S3" Version="3.7.9.20" />
+        <PackageReference Include="AWSSDK.S3" Version="3.7.9.21" />
         <PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
         <PackageReference Include="CommandLineParser" Version="2.9.1" />
         <PackageReference Include="CsvHelper" Version="27.2.1" />
