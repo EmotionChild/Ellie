@@ -32,7 +32,7 @@
         <PackageReference Include="Google.Apis.Urlshortener.v1" Version="1.41.1.138" />
         <PackageReference Include="Google.Apis.YouTube.v3" Version="1.57.0.2665" />
         <PackageReference Include="Google.Apis.Customsearch.v1" Version="1.49.0.2084" />
-        <PackageReference Include="Google.Protobuf" Version="3.20.1" />
+        <PackageReference Include="Google.Protobuf" Version="3.21.2" />
         <PackageReference Include="Grpc.Net.ClientFactory" Version="2.45.0" />
         <PackageReference Include="Grpc.Tools" Version="2.46.1">
             <PrivateAssets>all</PrivateAssets>
