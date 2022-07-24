@@ -1,6 +1,6 @@
 using Discord;
 
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 /// <summary>
 /// Commands which take this type as a first parameter can only be executed in a server

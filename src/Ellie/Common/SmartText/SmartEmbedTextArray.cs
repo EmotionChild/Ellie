@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 namespace Ellie;
 
 public sealed record SmartEmbedTextArray : SmartText
@@ -14,15 +14,18 @@ public sealed record SmartEmbedTextArray : SmartText
         if (Embeds is null)
             return Array.Empty<EmbedBuilder>();
 
-        return Embeds.Map(em => em.GetEmbed());
+        return Embeds
+            .Where(x => x.IsValid)
+            .Select(em => em.GetEmbed())
+            .ToArray();
     }
 
     public void NormalizeFields()
     {
         if (Embeds is null)
             return;
-
-        foreach (var eb in Embeds)
+        
+        foreach(var eb in Embeds)
             eb.NormalizeFields();
     }
 }

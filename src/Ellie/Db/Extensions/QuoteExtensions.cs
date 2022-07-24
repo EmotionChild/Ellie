@@ -1,5 +1,4 @@
 #nullable disable
-using Ellie.Common;
 using Microsoft.EntityFrameworkCore;
 using Ellie.Services.Database.Models;
 
@@ -45,12 +44,12 @@ public static class QuoteExtensions
         var rngk = new EllieRandom();
         return (await quotes.AsQueryable()
                             .Where(q => q.GuildId == guildId
-                                        && q.Keyword == keyword
-                                        && EF.Functions.Like(q.Text.ToUpper(), $"%{text.ToUpper()}%")
-                                // && q.Text.Contains(text, StringComparison.OrdinalIgnoreCase)
-                            )
-                            .ToListAsync()).OrderBy(_ => rngk.Next())
-                                           .FirstOrDefault();
+                                        && (keyword == null || q.Keyword == keyword)
+                                        && (EF.Functions.Like(q.Text.ToUpper(), $"%{text.ToUpper()}%")
+                                            || EF.Functions.Like(q.AuthorName, text)))
+                            .ToListAsync())
+               .OrderBy(_ => rngk.Next())
+               .FirstOrDefault();
     }
 
     public static void RemoveAllByKeyword(this DbSet<Quote> quotes, ulong guildId, string keyword)

@@ -1,6 +1,5 @@
 ﻿#nullable disable
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Logging;
 using Ellie.Db.Models;
 using Ellie.Services.Database.Models;
@@ -26,7 +25,7 @@ public abstract class EllieContext : DbContext
     public DbSet<ClubInfo> Clubs { get; set; }
     public DbSet<ClubBans> ClubBans { get; set; }
     public DbSet<ClubApplicants> ClubApplicants { get; set; }
-    
+
 
     //logging
     public DbSet<LogSetting> LogSettings { get; set; }
@@ -51,19 +50,26 @@ public abstract class EllieContext : DbContext
     public DbSet<AutoTranslateUser> AutoTranslateUsers { get; set; }
 
     public DbSet<Permissionv2> Permissions { get; set; }
-    
+
     public DbSet<BankUser> BankUsers { get; set; }
-    
+
     public DbSet<ReactionRoleV2> ReactionRoles { get; set; }
+
+    public DbSet<PatronUser> Patrons { get; set; }
+
+    public DbSet<PatronQuota> PatronQuotas { get; set; }
+
+    public DbSet<StreamOnlineMessage> StreamOnlineMessages { get; set; }
+
 
     #region Mandatory Provider-Specific Values
 
     protected abstract string CurrencyTransactionOtherIdDefaultValue { get; }
     protected abstract string DiscordUserLastXpGainDefaultValue { get; }
     protected abstract string LastLevelUpDefaultValue { get; }
-    
+
     #endregion
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         #region QUOTES
@@ -77,7 +83,11 @@ public abstract class EllieContext : DbContext
         #region GuildConfig
 
         var configEntity = modelBuilder.Entity<GuildConfig>();
-        configEntity.HasIndex(c => c.GuildId).IsUnique();
+        configEntity.HasIndex(c => c.GuildId)
+                    .IsUnique();
+
+        configEntity.Property(x => x.VerboseErrors)
+                    .HasDefaultValue(true);
 
         modelBuilder.Entity<AntiSpamSetting>().HasOne(x => x.GuildConfig).WithOne(x => x.AntiSpamSetting);
 
@@ -115,10 +125,10 @@ public abstract class EllieContext : DbContext
         var selfassignableRolesEntity = modelBuilder.Entity<SelfAssignedRole>();
 
         selfassignableRolesEntity.HasIndex(s => new
-                                 {
-                                     s.GuildId,
-                                     s.RoleId
-                                 })
+        {
+            s.GuildId,
+            s.RoleId
+        })
                                  .IsUnique();
 
         selfassignableRolesEntity.Property(x => x.Group).HasDefaultValue(0);
@@ -193,21 +203,14 @@ public abstract class EllieContext : DbContext
 
         #endregion
 
-        #region PatreonRewards
-
-        var pr = modelBuilder.Entity<RewardedUser>();
-        pr.HasIndex(x => x.PatreonUserId).IsUnique();
-
-        #endregion
-
         #region XpStats
 
         var xps = modelBuilder.Entity<UserXpStats>();
         xps.HasIndex(x => new
-           {
-               x.UserId,
-               x.GuildId
-           })
+        {
+            x.UserId,
+            x.GuildId
+        })
            .IsUnique();
 
         xps.Property(x => x.LastLevelUp)
@@ -372,9 +375,10 @@ public abstract class EllieContext : DbContext
             {
                 x.MessageId,
                 x.Emote
-            }).IsUnique();
+            })
+               .IsUnique();
         });
-        
+
         #endregion
 
         #region LogSettings
@@ -419,7 +423,37 @@ public abstract class EllieContext : DbContext
         modelBuilder.Entity<BankUser>(bu => bu.HasIndex(x => x.UserId).IsUnique());
 
         #endregion
-        
+
+
+        #region Patron
+
+        // currency rewards
+        var pr = modelBuilder.Entity<RewardedUser>();
+        pr.HasIndex(x => x.PlatformUserId).IsUnique();
+
+        // patrons
+        // patrons are not identified by their user id, but by their platform user id
+        // as multiple accounts (even maybe on different platforms) could have
+        // the same account connected to them
+        modelBuilder.Entity<PatronUser>(pu =>
+        {
+            pu.HasIndex(x => x.UniquePlatformUserId).IsUnique();
+            pu.HasKey(x => x.UserId);
+        });
+
+        // quotes are per user id
+        modelBuilder.Entity<PatronQuota>(pq =>
+        {
+            pq.HasIndex(x => x.UserId).IsUnique(false);
+            pq.HasKey(x => new
+            {
+                x.UserId,
+                x.FeatureType,
+                x.Feature
+            });
+        });
+
+        #endregion
     }
 
 #if DEBUG

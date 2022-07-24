@@ -11,10 +11,11 @@ namespace Ellie.Coordinator
         public Config(int totalShards, int recheckIntervalMs, string shardStartCommand, string shardStartArgs, double unresponsiveSec)
         {
             TotalShards = totalShards;
-            RecheckIntervalMs = recheckIntervalMs;  
+            RecheckIntervalMs = recheckIntervalMs;
             ShardStartCommand = shardStartCommand;
             ShardStartArgs = shardStartArgs;
             UnresponsiveSec = unresponsiveSec;
         }
+
     }
 }

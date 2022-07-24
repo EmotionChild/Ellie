@@ -1,6 +1,6 @@
 using YamlDotNet.Serialization;
 
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 public readonly struct CommandStrings
 {

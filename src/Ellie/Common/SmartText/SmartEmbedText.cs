@@ -1,6 +1,6 @@
+﻿#nullable disable warnings
 using SixLabors.ImageSharp.PixelFormats;
 
-#nullable disable
 namespace Ellie;
 
 public sealed record SmartEmbedArrayElementText : SmartEmbedTextBase
@@ -9,12 +9,12 @@ public sealed record SmartEmbedArrayElementText : SmartEmbedTextBase
 
     public SmartEmbedArrayElementText() : base()
     {
-
+        
     }
-
+    
     public SmartEmbedArrayElementText(IEmbed eb) : base(eb)
     {
-
+        
     }
 
     protected override EmbedBuilder GetEmbedInternal()
@@ -37,11 +37,11 @@ public sealed record SmartEmbedText : SmartEmbedTextBase
     {
     }
 
-    private SmartEmbedText(IEmbed eb, string plainText = null)
+    private SmartEmbedText(IEmbed eb, string? plainText = null)
         : base(eb)
         => (PlainText, Color) = (plainText, eb.Color?.RawValue ?? 0);
 
-    public static SmartEmbedText FromEmbed(IEmbed eb, string plainText = null)
+    public static SmartEmbedText FromEmbed(IEmbed eb, string? plainText = null)
         => new(eb, plainText);
 
     protected override EmbedBuilder GetEmbedInternal()
@@ -75,9 +75,9 @@ public abstract record SmartEmbedTextBase : SmartText
 
     protected SmartEmbedTextBase()
     {
-
+        
     }
-
+    
     protected SmartEmbedTextBase(IEmbed eb)
     {
         Title = eb.Title;
@@ -100,7 +100,7 @@ public abstract record SmartEmbedTextBase : SmartText
                 IconUrl = ef.IconUrl
             }
             : null;
-
+        
         if (eb.Fields.Length > 0)
         {
             Fields = eb.Fields.Select(field
@@ -116,7 +116,7 @@ public abstract record SmartEmbedTextBase : SmartText
 
     public EmbedBuilder GetEmbed()
         => GetEmbedInternal();
-
+    
     protected virtual EmbedBuilder GetEmbedInternal()
     {
         var embed = new EmbedBuilder();

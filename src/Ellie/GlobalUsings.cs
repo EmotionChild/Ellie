@@ -1,16 +1,17 @@
-﻿global using System.Collections.Concurrent;
+﻿// global using System.Collections.Concurrent;
+global using NonBlocking;
 
 // packages
 global using Serilog;
 global using Humanizer;
 
-// nadekobot
+// ellie
 global using Ellie;
 global using Ellie.Services;
 global using Ellie.Common;
 global using Ellie.Common.Attributes;
 global using Ellie.Extensions;
-global using Ellie.Bird;
+global using Ellie.Marmalade;
 
 // discord
 global using Discord;

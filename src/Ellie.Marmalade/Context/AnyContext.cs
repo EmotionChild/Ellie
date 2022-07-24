@@ -1,7 +1,7 @@
 using Discord;
 using Ellie;
 
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 /// <summary>
 /// Commands which take this class as a first parameter can be executed in both DMs and Servers 

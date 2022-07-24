@@ -3,7 +3,7 @@ using Ellie.Common;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 
-namespace NadekoBot.Tests
+namespace Ellie.Tests
 {
     public class PubSubTests
     {

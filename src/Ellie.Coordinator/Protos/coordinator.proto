@@ -6,7 +6,7 @@ option csharp_namespace = "Ellie.Coordinator";
 package ellie;
 
 service Coordinator {
-	// sends update to coordinator to let it know that the shard is alive
+  // sends update to coordinator to let it know that the shard is alive
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatReply);
   // restarts a shard given the id
   rpc RestartShard(RestartShardRequest) returns (RestartShardReply);

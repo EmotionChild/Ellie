@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 

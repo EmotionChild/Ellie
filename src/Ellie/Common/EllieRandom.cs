@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using System.Security.Cryptography;
 
 namespace Ellie.Common;

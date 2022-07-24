@@ -1,4 +1,4 @@
-﻿namespace Ellie.Common.ModuleBehaviors;
+namespace Ellie.Common.ModuleBehaviors;
 
 /// <summary>
 ///     Executed if no command was found for this message

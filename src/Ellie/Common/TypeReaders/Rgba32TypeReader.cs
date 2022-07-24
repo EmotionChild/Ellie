@@ -1,4 +1,4 @@
-using Color = SixLabors.ImageSharp.Color;
+﻿using Color = SixLabors.ImageSharp.Color;
 
 #nullable disable
 namespace Ellie.Common.TypeReaders;
@@ -14,7 +14,7 @@ public sealed class Rgba32TypeReader : EllieTypeReader<Color>
         }
         catch
         {
-            return ValueTask.FromResult(TypeReaderResult.FromError<Color>(CommandError.ParseFailed, "Parameter is not a valid color hex"));
+            return ValueTask.FromResult(TypeReaderResult.FromError<Color>(CommandError.ParseFailed, "Parameter is not a valid color hex."));
         }
     }
 }

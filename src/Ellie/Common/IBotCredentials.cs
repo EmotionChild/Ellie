@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 namespace Ellie;
 
 public interface IBotCredentials
@@ -25,6 +25,8 @@ public interface IBotCredentials
     string CoordinatorUrl { get; set; }
     string TwitchClientId { get; set; }
     string TwitchClientSecret { get; set; }
+    GoogleApiConfig Google { get; set; }
+    BotCacheImplemenation BotCache { get; set; }
 }
 
 public class RestartConfig

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,13 +11,13 @@
     <RepositoryUrl>https://github.com/EmotionChild/Ellie</RepositoryUrl>
 
     <Authors>EllieBotDevs</Authors>
-    <Version>2.0.1</Version>
+    <Version>2.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discord.Net.Core" Version="3.6.1" />
-    <PackageReference Include="Serilog" Version="2.10.0" />
-    <PackageReference Include="YamlDotNet" Version="11.2.1" />
+    <PackageReference Include="Discord.Net.Core" Version="3.7.2" />
+    <PackageReference Include="Serilog" Version="2.11.0" />
+    <PackageReference Include="YamlDotNet" Version="12.0.0" />
   </ItemGroup>
 
 </Project>

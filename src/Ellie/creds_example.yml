@@ -1,5 +1,5 @@
 # DO NOT CHANGE
-version: 5
+version: 6
 # Bot token. Do not share with anyone ever -> https://discordapp.com/developers/applications/
 token: ''
 # List of Ids of the users who have bot owner permissions
@@ -9,12 +9,25 @@ ownerIds: []
 usePrivilegedIntents: true
 # The number of shards that the bot will running on.
 # Leave at 1 if you don't know what you're doing.
+#
+# note: If you are planning to have more than one shard, then you must change botCache to 'redis'.
+# Also, in that case you should be using Ellie.Coordinator to start the bot, and it will correctly override this value.
 totalShards: 1
 # Login to https://console.cloud.google.com, create a new project, go to APIs & Services -> Library -> YouTube Data API and enable it.
 # Then, go to APIs and Services -> Credentials and click Create credentials -> API key.
 # Used only for Youtube Data Api (at the moment).
 googleApiKey: ''
-# Settings for voting system for discordbots. Meant for use on global Nadeko.
+# Create a new custom search here https://programmablesearchengine.google.com/cse/create/new
+# Enable SafeSearch
+# Remove all Sites to Search
+# Enable Search the entire web
+# Copy the 'Search Engine ID' to the SearchId field
+# 
+# Do all steps again but enable image search for the ImageSearchId
+google:
+  searchId: 
+  imageSearchId: 
+# Settings for voting system for discordbots. Meant for use on global Ellie.
 votes:
 # top.gg votes service url
 # This is the url of your instance of the Ellie.Votes api
@@ -53,8 +66,8 @@ db:
   # Database connection string.
   # You MUST change this if you're not using "sqlite" type.
   # Default is "Data Source=data/Ellie.db"
-  # Example for mysql: "Server=localhost;Port=3306;Uid=root;Pwd=my_super_secret_mysql_password;Database=nadeko"
-  # Example for postgresql: "Server=localhost;Port=5432;User Id=postgres;Password=my_super_secret_postgres_password;Database=nadeko;"
+  # Example for mysql: "Server=localhost;Port=3306;Uid=root;Pwd=my_super_secret_mysql_password;Database=ellie"
+  # Example for postgresql: "Server=localhost;Port=5432;User Id=postgres;Password=my_super_secret_postgres_password;Database=ellie;"
   connectionString: Data Source=data/Ellie.db
 # Address and port of the coordinator endpoint. Leave empty for default.
 # Change only if you've changed the coordinator address or port.

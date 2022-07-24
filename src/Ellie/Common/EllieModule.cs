@@ -1,8 +1,8 @@
-#nullable disable
+﻿#nullable disable
 using System.Globalization;
 using MessageType = Ellie.Extensions.MessageType;
 
-// Resharper disable InconsistentNaming
+// ReSharper disable InconsistentNaming
 
 namespace Ellie.Modules;
 
@@ -30,15 +30,15 @@ public abstract class EllieModule : ModuleBase
 
     protected string GetText(in LocStr data)
         => Strings.GetText(data, Culture);
-
+    
     public Task<IUserMessage> SendErrorAsync(
         string title,
         string error,
         string url = null,
-        string footer = null,
-        EllieInteraction inter = null)
+        string footer = null, 
+        EllieButtonInteraction inter = null)
         => ctx.Channel.SendErrorAsync(_eb, title, error, url, footer);
-
+    
     public Task<IUserMessage> SendConfirmAsync(
         string title,
         string text,
@@ -47,33 +47,33 @@ public abstract class EllieModule : ModuleBase
         => ctx.Channel.SendConfirmAsync(_eb, title, text, url, footer);
 
     // 
-    public Task<IUserMessage> SendErrorAsync(string text, EllieInteraction inter = null)
+    public Task<IUserMessage> SendErrorAsync(string text, EllieButtonInteraction inter = null)
         => ctx.Channel.SendAsync(_eb, text, MessageType.Error, inter);
-    public Task<IUserMessage> SendConfirmAsync(string text, EllieInteraction inter = null)
+    public Task<IUserMessage> SendConfirmAsync(string text, EllieButtonInteraction inter = null)
         => ctx.Channel.SendAsync(_eb, text, MessageType.Ok, inter);
-    public Task<IUserMessage> SendPendingAsync(string text, EllieInteraction inter = null)
+    public Task<IUserMessage> SendPendingAsync(string text, EllieButtonInteraction inter = null)
         => ctx.Channel.SendAsync(_eb, text, MessageType.Pending, inter);
 
-
+    
     // localized normal
-    public Task<IUserMessage> ErrorLocalizedAsync(LocStr str, EllieInteraction inter = null)
+    public Task<IUserMessage> ErrorLocalizedAsync(LocStr str, EllieButtonInteraction inter = null)
         => SendErrorAsync(GetText(str), inter);
 
-    public Task<IUserMessage> PendingLocalizedAsync(LocStr str, EllieInteraction inter = null)
+    public Task<IUserMessage> PendingLocalizedAsync(LocStr str, EllieButtonInteraction inter = null)
         => SendPendingAsync(GetText(str), inter);
 
-    public Task<IUserMessage> ConfirmLocalizedAsync(LocStr str, EllieInteraction inter = null)
+    public Task<IUserMessage> ConfirmLocalizedAsync(LocStr str, EllieButtonInteraction inter = null)
         => SendConfirmAsync(GetText(str), inter);
 
     // localized replies
-    public Task<IUserMessage> ReplyErrorLocalizedAsync(LocStr str, EllieInteraction inter = null)
-        => SendErrorAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}");
+    public Task<IUserMessage> ReplyErrorLocalizedAsync(LocStr str, EllieButtonInteraction inter = null)
+        => SendErrorAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}", inter);
 
-    public Task<IUserMessage> ReplyPendingLocalizedAsync(LocStr str, EllieInteraction inter = null)
-        => SendPendingAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}");
+    public Task<IUserMessage> ReplyPendingLocalizedAsync(LocStr str, EllieButtonInteraction inter = null)
+        => SendPendingAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}", inter);
 
-    public Task<IUserMessage> ReplyConfirmLocalizedAsync(LocStr str, EllieInteraction inter = null)
-        => SendConfirmAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}");
+    public Task<IUserMessage> ReplyConfirmLocalizedAsync(LocStr str, EllieButtonInteraction inter = null)
+        => SendConfirmAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}", inter);
 
     public async Task<bool> PromptUserConfirmAsync(IEmbedBuilder embed)
     {

@@ -3,7 +3,7 @@ using System.Text;
 using Ellie.Common.Yml;
 using NUnit.Framework;
 
-namespace NadekoBot.Tests
+namespace Ellie.Tests
 {
     public class RandomTests
     {

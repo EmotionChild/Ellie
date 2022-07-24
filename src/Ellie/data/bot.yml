@@ -58,7 +58,7 @@ helpText: |-
           "inline": false
         },
         {
-          "name": "EmotionBot Support Server",
+          "name": "Ellie Support Server",
           "value": "https://discord.gg/SVQVzJq ",
           "inline": true
         }

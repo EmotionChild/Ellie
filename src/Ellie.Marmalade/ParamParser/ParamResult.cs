@@ -1,4 +1,4 @@
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 public readonly struct ParseResult<T>
 {

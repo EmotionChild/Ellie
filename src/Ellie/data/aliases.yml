@@ -1280,18 +1280,18 @@ deleteemptyservers:
   - deleteemptyservers
 stock:
   - stock
-medusaload:
-  - pluginload
-  - plload
-medusaunload:
-  - pluginunload
-  - plunload
-pluginlist:
-  - pluginlist
-  - pllist
-medusainfo:
-  - plugininfo
-  - plinfo
+marmaladeload:
+  - marmaladeload
+  - marmload
+marmaladeunload:
+  - marmaladeunload
+  - marmunload
+marmaladelist:
+  - marmaladelist
+  - marmlist
+marmaladeinfo:
+  - marmaladeinfo
+  - marminfo
 bankdeposit:
   - deposit
   - d

@@ -4,7 +4,7 @@ using Ellie.Db.Models;
 using Ellie.Services.Database;
 using Ellie.Services.Database.Models;
 
-namespace NadekoBot.Db;
+namespace Ellie.Db;
 
 public static class GuildConfigExtensions
 {

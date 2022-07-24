@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 namespace Ellie.Common.TypeReaders;
 
 public sealed class EmoteTypeReader : EllieTypeReader<Emote>

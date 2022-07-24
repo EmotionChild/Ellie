@@ -1,9 +1,11 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Common.Yml;
+using Cloneable;
 
 namespace Ellie.Common;
 
-public class ImageUrls
+[Cloneable]
+public partial class ImageUrls : ICloneable<ImageUrls> 
 {
     [Comment("DO NOT CHANGE")]
     public int Version { get; set; } = 3;

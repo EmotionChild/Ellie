@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using System.Text.RegularExpressions;
 
 namespace Ellie.Common;
@@ -40,7 +40,7 @@ public class Replacer
                 Color = embedData.Color
             },
             SmartPlainText plain => Replace(plain),
-            SmartEmbedTextArray arr => Replace(arr),
+            SmartEmbedTextArray arr => Replace(arr), 
             _ => throw new ArgumentOutOfRangeException(nameof(data), "Unsupported argument type")
         };
 
@@ -57,7 +57,7 @@ public class Replacer
     private SmartPlainText Replace(SmartPlainText plain)
         => Replace(plain.Text);
 
-    private T Replace<T>(T embedData) where T : SmartEmbedTextBase, new()
+    private T Replace<T>(T embedData) where T: SmartEmbedTextBase, new()
     {
         var newEmbedData = new T
         {

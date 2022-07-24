@@ -1,4 +1,4 @@
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 /// <summary>
 /// Marks services in command arguments for injection.

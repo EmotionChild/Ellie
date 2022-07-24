@@ -1,4 +1,4 @@
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 /// <summary>
 ///     Implemeted by classes which provide localized strings in their own ways

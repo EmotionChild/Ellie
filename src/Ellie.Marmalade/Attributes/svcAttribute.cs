@@ -1,4 +1,4 @@
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 /// <summary>
 /// Marks the class as a service which can be used within the same Marmalade

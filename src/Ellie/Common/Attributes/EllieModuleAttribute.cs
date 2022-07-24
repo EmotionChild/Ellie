@@ -11,7 +11,7 @@ internal sealed class EllieModuleAttribute : GroupAttribute
     }
 }
 
-[AttributeUsage(AttributeTargets.Module)]
+[AttributeUsage(AttributeTargets.Method)]
 internal sealed class EllieDescriptionAttribute : SummaryAttribute
 {
     public EllieDescriptionAttribute([CallerMemberName] string name = "")

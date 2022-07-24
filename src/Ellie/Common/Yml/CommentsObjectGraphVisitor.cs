@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
@@ -9,7 +9,7 @@ namespace Ellie.Common.Yml;
 public class CommentsObjectGraphVisitor : ChainedObjectGraphVisitor
 {
     public CommentsObjectGraphVisitor(IObjectGraphVisitor<IEmitter> nextVisitor)
-        :base(nextVisitor)
+        : base(nextVisitor)
     {
     }
 

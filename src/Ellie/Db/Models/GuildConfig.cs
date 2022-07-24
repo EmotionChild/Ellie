@@ -15,7 +15,7 @@ public class GuildConfig : DbEntity
 
     public string AutoAssignRoleIds { get; set; }
 
-    // greet stuff
+    //greet stuff
     public int AutoDeleteGreetMessagesTimer { get; set; } = 30;
     public int AutoDeleteByeMessagesTimer { get; set; } = 30;
 
@@ -31,14 +31,14 @@ public class GuildConfig : DbEntity
     public bool SendChannelByeMessage { get; set; }
     public string ChannelByeMessageText { get; set; } = "%user% has left!";
 
-    // self assignable roles
+    //self assignable roles
     public bool ExclusiveSelfAssignedRoles { get; set; }
     public bool AutoDeleteSelfAssignedRoleMessages { get; set; }
 
-    // stream notifications
+    //stream notifications
     public HashSet<FollowedStream> FollowedStreams { get; set; } = new();
 
-    // currencyGeneration
+    //currencyGeneration
     public HashSet<GCChannelId> GenerateCurrencyChannelIds { get; set; } = new();
 
     public List<Permissionv2> Permissions { get; set; }
@@ -47,14 +47,14 @@ public class GuildConfig : DbEntity
 
     public HashSet<CommandCooldown> CommandCooldowns { get; set; } = new();
 
-    // filtering
+    //filtering
     public bool FilterInvites { get; set; }
     public bool FilterLinks { get; set; }
     public HashSet<FilterChannelId> FilterInvitesChannelIds { get; set; } = new();
     public HashSet<FilterLinksChannelId> FilterLinksChannelIds { get; set; } = new();
 
-    // public bool FilterLinks { get; set; }
-    // public HashSet<FilterLinksChannelId> FilterLinksChannels { get; set; } = new HashSet<FilterLinksChannelId>();
+    //public bool FilterLinks { get; set; }
+    //public HashSet<FilterLinksChannelId> FilterLinksChannels { get; set; } = new HashSet<FilterLinksChannelId>();
 
     public bool FilterWords { get; set; }
     public HashSet<FilteredWord> FilteredWords { get; set; } = new();
@@ -84,7 +84,7 @@ public class GuildConfig : DbEntity
 
     public List<ShopEntry> ShopEntries { get; set; }
     public ulong? GameVoiceChannel { get; set; }
-    public bool VerboseErrors { get; set; }
+    public bool VerboseErrors { get; set; } = true;
 
     public StreamRoleSettings StreamRole { get; set; }
 

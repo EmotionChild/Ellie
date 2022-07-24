@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Db;
 using Ellie.Modules.Gambling.Services;
 using NCalc;
@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace Ellie.Common.TypeReaders;
 
-public sealed class ShmartNumberTextReader : EllieTypeReader<ShmartNumber>
+public sealed class ShmartNumberTypeReader : EllieTypeReader<ShmartNumber>
 {
     private static readonly Regex _percentRegex = new(@"^((?<num>100|\d{1,2})%)$", RegexOptions.Compiled);
     private readonly DbService _db;

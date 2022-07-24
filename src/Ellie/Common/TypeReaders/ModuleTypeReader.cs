@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 namespace Ellie.Common.TypeReaders;
 
 public sealed class ModuleTypeReader : EllieTypeReader<ModuleInfo>
@@ -10,18 +10,18 @@ public sealed class ModuleTypeReader : EllieTypeReader<ModuleInfo>
 
     public override ValueTask<TypeReaderResult<ModuleInfo>> ReadAsync(ICommandContext context, string input)
     {
-        input = input.ToLowerInvariant();
+        input = input.ToUpperInvariant();
         var module = _cmds.Modules.GroupBy(m => m.GetTopLevelModule())
                           .FirstOrDefault(m => m.Key.Name.ToUpperInvariant() == input)
                           ?.Key;
         if (module is null)
             return new(TypeReaderResult.FromError<ModuleInfo>(CommandError.ParseFailed, "No such module found."));
 
-        return new(TypeReaderResult.FromError(module));
+        return new(TypeReaderResult.FromSuccess(module));
     }
 }
 
-public sealed class ModuleOrCrTypeReader : EllieTypeReader<ModuleOrCrTypeReader>
+public sealed class ModuleOrCrTypeReader : EllieTypeReader<ModuleOrCrInfo>
 {
     private readonly CommandService _cmds;
 

@@ -1,5 +1,4 @@
-#nullable disable
-using Newtonsoft.Json;
+﻿#nullable disable
 using Newtonsoft.Json.Linq;
 
 namespace Ellie;
@@ -14,7 +13,7 @@ public abstract record SmartText
 
     public bool IsEmbedArray
         => this is SmartEmbedTextArray;
-
+    
     public static SmartText operator +(SmartText text, string input)
         => text switch
         {
@@ -45,7 +44,6 @@ public abstract record SmartText
             _ => throw new ArgumentOutOfRangeException(nameof(text))
         };
 
-    [CanBeNull]
     public static SmartText CreateFrom(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
@@ -70,13 +68,13 @@ public abstract record SmartText
 
                 var obj = root.ToObject<SmartEmbedText>();
 
-                if (obj is null)
+                if (obj is null || !(obj.IsValid || !string.IsNullOrWhiteSpace(obj.PlainText)))
                     return new SmartPlainText(input);
 
                 obj.NormalizeFields();
                 return obj;
             }
-
+            
             return new SmartPlainText(input);
         }
         catch

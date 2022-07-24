@@ -1,11 +1,11 @@
-namespace Ellie;
+﻿namespace Ellie;
 
-public sealed class EllieActionInteraction : EllieOwnInteraction
+public sealed class EllieButtonActionInteraction : EllieButtonOwnInteraction
 {
     private readonly EllieInteractionData _data;
     private readonly Func<SocketMessageComponent, Task> _action;
 
-    public EllieActionInteraction(
+    public EllieButtonActionInteraction(
         DiscordSocketClient client,
         ulong authorId,
         EllieInteractionData data,
@@ -17,10 +17,12 @@ public sealed class EllieActionInteraction : EllieOwnInteraction
         _action = action;
     }
 
-    public override string Name
+    protected override string Name
         => _data.CustomId;
-    public override IEmote Emote
+    protected override IEmote Emote
         => _data.Emote;
+    protected override string? Text
+        => _data.Text;
 
     public override Task ExecuteOnActionAsync(SocketMessageComponent smc)
         => _action(smc);

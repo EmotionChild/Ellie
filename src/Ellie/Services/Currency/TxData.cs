@@ -1,4 +1,4 @@
-﻿namespace Ellie.Services.Currency;
+namespace Ellie.Services.Currency;
 
 public record class TxData(
     string Type,

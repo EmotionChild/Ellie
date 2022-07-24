@@ -12,7 +12,7 @@ public interface IConfigSeria
         where T : notnull;
 
     /// <summary>
-    ///     Describe string data into an object of the specified type
+    ///     Deserialize string data into an object of the specified type
     /// </summary>
     public T Deserialize<T>(string data);
 }

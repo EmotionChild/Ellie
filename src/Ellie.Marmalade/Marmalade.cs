@@ -1,6 +1,6 @@
 ﻿using Discord;
 
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 /// <summary>
 /// The base class which will be loaded as a module into Ellie

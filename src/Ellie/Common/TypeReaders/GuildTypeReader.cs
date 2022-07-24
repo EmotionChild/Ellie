@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 namespace Ellie.Common.TypeReaders;
 
 public sealed class GuildTypeReader : EllieTypeReader<IGuild>
@@ -10,10 +10,10 @@ public sealed class GuildTypeReader : EllieTypeReader<IGuild>
 
     public override ValueTask<TypeReaderResult<IGuild>> ReadAsync(ICommandContext context, string input)
     {
-        input = input.Trim().ToLowerInvariant();
+        input = input.Trim().ToUpperInvariant();
         var guilds = _client.Guilds;
-        IGuild guild = guilds.FirstOrDefault(g => g.Id.ToString().Trim().ToUpperInvariant() == input) // by id
-                       ?? guilds.FirstOrDefault(g => g.Name.Trim().ToLowerInvariant() == input); // by name
+        IGuild guild = guilds.FirstOrDefault(g => g.Id.ToString().Trim().ToUpperInvariant() == input) //by id
+                       ?? guilds.FirstOrDefault(g => g.Name.Trim().ToUpperInvariant() == input); //by name
 
         if (guild is not null)
             return new(TypeReaderResult.FromSuccess(guild));

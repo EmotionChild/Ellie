@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Serilog;
 using YamlDotNet.Serialization;
 
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 /// <summary>
 ///     Loads strings from the shortcut or localizable path

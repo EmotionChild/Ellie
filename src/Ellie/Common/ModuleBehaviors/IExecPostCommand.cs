@@ -1,8 +1,8 @@
-﻿namespace Ellie.Common.ModuleBehaviors;
+namespace Ellie.Common.ModuleBehaviors;
 
 /// <summary>
 /// This interface's method is executed after the command successfully finished execution.
-/// ***There is no support for this method in NadekoBot services.***
+/// ***There is no support for this method in Ellie services.***
 /// It is only meant to be used in medusa system
 /// </summary>
 public interface IExecPostCommand

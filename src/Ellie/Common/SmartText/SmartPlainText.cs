@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 namespace Ellie;
 
 public sealed record SmartPlainText : SmartText

@@ -1,4 +1,4 @@
-namespace Ellie.Common.TypeReaders;
+﻿namespace Ellie.Common.TypeReaders;
 
 public readonly struct TypeReaderResult<T>
 {

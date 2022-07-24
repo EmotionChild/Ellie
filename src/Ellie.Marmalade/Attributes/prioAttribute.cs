@@ -1,4 +1,4 @@
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 /// <summary>
 /// Sets the priority of a command in case there are multiple commands with the same name but different parameters.

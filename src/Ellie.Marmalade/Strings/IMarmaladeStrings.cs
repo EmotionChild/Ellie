@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 /// <summary>
 ///     Defines methods to retrieve and reload marmalade strings

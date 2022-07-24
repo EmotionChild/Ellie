@@ -12,7 +12,7 @@ namespace Ellie.Common.Configs;
 public sealed partial class BotConfig : ICloneable<BotConfig>
 {
     [Comment(@"DO NOT CHANGE")]
-    public int Version { get; set; } = 2;
+    public int Version { get; set; } = 3;
 
     [Comment(@"Most commands, when executed, have a small colored line
 next to the response. The color depends whether the command
@@ -29,9 +29,9 @@ and copy the hex code fo your selected color (marked as #)")]
 Allowed values: Simple, Normal, None")]
     public ConsoleOutputType ConsoleOutputType { get; set; }
 
-    //         [Comment(@"For what kind of updates will the bot check.
-    // Allowed values: Release, Commit, None")]
-    //         public UpdateCheckType CheckForUpdates { get; set; }
+//         [Comment(@"For what kind of updates will the bot check.
+// Allowed values: Release, Commit, None")]
+//         public UpdateCheckType CheckForUpdates { get; set; }
 
     // [Comment(@"How often will the bot check for updates, in hours")]
     // public int CheckUpdateInterval { get; set; }
@@ -110,7 +110,7 @@ See RotatingStatuses submodule in Administration.")]
     },
     {
       ""name"": ""Ellie Support Server"",
-      ""value"": ""https://discord.gg/SVQVzJq "",
+      ""value"": ""https://discord.gg/SVQVzJq/ "",
       ""inline"": true
     }
   ]
@@ -130,11 +130,11 @@ See RotatingStatuses submodule in Administration.")]
         };
     }
 
-    //         [Comment(@"Whether the prefix will be a suffix, or prefix.
-    // For example, if your prefix is ! you will run a command called 'cash' by typing either
-    // '!cash @Someone' if your prefixIsSuffix: false or
-    // 'cash @Someone!' if your prefixIsSuffix: true")]
-    //         public bool PrefixIsSuffix { get; set; }
+//         [Comment(@"Whether the prefix will be a suffix, or prefix.
+// For example, if your prefix is ! you will run a command called 'cash' by typing either
+// '!cash @Someone' if your prefixIsSuffix: false or
+// 'cash @Someone!' if your prefixIsSuffix: true")]
+//         public bool PrefixIsSuffix { get; set; }
 
     // public string Prefixed(string text) => PrefixIsSuffix
     //     ? text + Prefix

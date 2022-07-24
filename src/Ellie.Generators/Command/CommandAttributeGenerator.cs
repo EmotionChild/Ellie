@@ -64,7 +64,9 @@ public class CmdAttribute : System.Attribute
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
         // #if DEBUG
-        //         SpinWait.SpinUntil(() => Debugger.IsAttached);
+        //         if (!Debugger.IsAttached)
+        //             Debugger.Launch();
+        //         // SpinWait.SpinUntil(() => Debugger.IsAttached);
         // #endif
         context.RegisterPostInitializationOutput(static ctx => ctx.AddSource(
             "CmdAttribute.g.cs",
@@ -157,7 +159,9 @@ public class CmdAttribute : System.Attribute
             .Distinct();
 
         var methodModels = methods
-            .Select(x => MethodDeclarationToMethodModel(compilation, x!));
+            .Select(x => MethodDeclarationToMethodModel(compilation, x!))
+            .Where(static x => x is not null)
+            .Cast<MethodModel>();
 
         var groups = methodModels
             .GroupBy(static x => $"{x.Namespace}.{string.Join(".", x.Classes)}");
@@ -177,7 +181,7 @@ public class CmdAttribute : System.Attribute
             var model = new FileModel(
                 methods: elems,
                 ns: elems[0].Namespace,
-                classHierarchy: elems[0].Classes
+                classHierarchy: elems![0].Classes
             );
 
             models.Add(model);
@@ -187,11 +191,21 @@ public class CmdAttribute : System.Attribute
         return models;
     }
 
-    private static MethodModel MethodDeclarationToMethodModel(Compilation comp, MethodDeclarationSyntax decl)
+    private static MethodModel? MethodDeclarationToMethodModel(Compilation comp, MethodDeclarationSyntax decl)
     {
         // SpinWait.SpinUntil(static () => Debugger.IsAttached);
 
-        var semanticModel = comp.GetSemanticModel(decl.SyntaxTree);
+        SemanticModel semanticModel;
+        try
+        {
+            semanticModel = comp.GetSemanticModel(decl.SyntaxTree);
+        }
+        catch
+        {
+            // for some reason this method can throw "Not part of this compilation" argument exception
+            return null;
+        }
+
         var methodModel = new MethodModel(
             @params: decl.ParameterList.Parameters
                 .Where(p => p.Type is not null)

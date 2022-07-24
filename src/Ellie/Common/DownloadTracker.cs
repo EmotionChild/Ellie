@@ -1,7 +1,7 @@
 #nullable disable
 namespace Ellie.Common;
 
-public class DownloadTracker : INService
+public class DownloadTracker : IEService
 {
     private ConcurrentDictionary<ulong, DateTime> LastDownloads { get; } = new();
     private readonly SemaphoreSlim _downloadUsersSemaphore = new(1, 1);

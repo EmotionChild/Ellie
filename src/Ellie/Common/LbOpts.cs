@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using CommandLine;
 
 namespace Ellie.Common;

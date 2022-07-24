@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using System.Text.RegularExpressions;
 
 namespace Ellie.Common.TypeReaders.Models;

@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 namespace Ellie.Common;
 
 public class OldCreds
@@ -14,7 +14,7 @@ public class OldCreds
     public string CarbonKey { get; set; } = string.Empty;
     public int TotalShards { get; set; } = 1;
     public string PatreonAccessToken { get; set; } = string.Empty;
-    public string PatreonCampaignId { get; set; } = "6761900";
+    public string PatreonCampaignId { get; set; } = "334038";
     public RestartConfig RestartCommand { get; set; }
 
     public string ShardRunCommand { get; set; } = string.Empty;

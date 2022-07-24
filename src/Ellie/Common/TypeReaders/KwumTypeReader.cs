@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 namespace Ellie.Common.TypeReaders;
 
 public sealed class KwumTypeReader : EllieTypeReader<kwum>
@@ -12,7 +12,7 @@ public sealed class KwumTypeReader : EllieTypeReader<kwum>
     }
 }
 
-public sealed class SmartTextReader : EllieTypeReader<SmartText>
+public sealed class SmartTextTypeReader : EllieTypeReader<SmartText>
 {
     public override ValueTask<TypeReaderResult<SmartText>> ReadAsync(ICommandContext ctx, string input)
         => new(TypeReaderResult.FromSuccess(SmartText.CreateFrom(input)));

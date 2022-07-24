@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using Serilog;
 
-namespace Ellie.Bird;
+namespace Ellie.Marmalade;
 
 public class MarmaladeStrings : IMarmaladeStrings
 {
